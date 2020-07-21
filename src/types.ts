@@ -19,6 +19,12 @@ export interface GraphQLRequestContext {
   variables?: Variables
 }
 
+export interface GraphQLSubscriptionObserver<T = any> {
+  next: (data: T) => any;
+  error: (err: Error) => any;
+  complete: () => any;
+}
+
 export class ClientError extends Error {
   response: GraphQLResponse
   request: GraphQLRequestContext
